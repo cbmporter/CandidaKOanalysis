@@ -10,16 +10,14 @@ library("extrafont")
 #loadfonts(device = "pdf")
 
 # load and process index for data - see example index file 
-#setwd('/path/to/data/index/')
-setwd('/Users/cporter/Google Drive/Collins Lab Docs/Research Projects/Rebecca/publicCode')
+setwd('/path/to/data/index/')
 geneIndex = read.table('geneIndex.csv', sep=",")
 lowerIndex = as.matrix(geneIndex[lower.tri(geneIndex, diag=TRUE)])
 upperIndex = as.matrix(geneIndex[upper.tri(geneIndex, diag=TRUE)])
 upperIndex_i = upperIndex
 
 # load index to gene name mapping
-#geneNames <- read.table('geneNames.csv', sep=",")
-geneNames <- read.table('/Users/cporter/Google Drive/Collins Lab Docs/Research Projects/Rebecca/publicCode/geneNames.csv', sep=",")
+geneNames <- read.table('geneNames.csv', sep=",")
 
 # reverse the string order of the name for upper genes
 strReverse <- function(x)
@@ -32,8 +30,7 @@ sortedUpper = sort(upperIndex, index.return=TRUE)
 
 # load and process data: should be a folder with .csv files of 
 # OD measurements for each condition; see example file
-#setwd('/path/to/OD/data/')
-setwd('/Users/cporter/Google Drive/Collins Lab Docs/Research Projects/Rebecca/publicCode/data')
+setwd('/path/to/OD/data/')
 conditions <- list.files()
 
 # define variables 
@@ -125,8 +122,7 @@ completeConditions <- conditions[complete.cases(t(avgData_i))]
 
 
 # save data to csv files
-#setwd('/path/to/save/data/')
-setwd('/Users/cporter/Google Drive/Collins Lab Docs/Research Projects/Rebecca/publicCode')
+setwd('/path/to/save/data/')
 write.csv(allData, "allData.csv")
 write.csv(avgData, "avgData.csv")
 
